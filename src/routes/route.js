@@ -28,12 +28,12 @@ router.get("/third",function(req, res)
     formatt.upp()
     
 })
-router.get("/hello",function(req, res)
-{
-    res.send('hello there')
-    months =["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-   console.log( _.chunk(months, 4) )
-});
+// router.get("/hello",function(req, res)
+// {
+//     res.send('hello there')
+//     months =["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+//    console.log( _.chunk(months, 4) )
+// });
 
 module.exports = router;
 
