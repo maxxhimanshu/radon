@@ -1,8 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
-// const printDate = require("../util/helper.js")
-// const formatt = require("../validator/formator.js")
+const printDate = require("../util/helper.js")
+const formatt = require("../validator/formator.js")
 const wel = require("../logger/logger.js")
 
 router.get('/test-me', function (req, res) {
