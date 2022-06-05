@@ -1,19 +1,22 @@
 const express = require('express');
 
 const router = express.Router();
-const printDate = require("../util/helper.js")
-const formatt = require("../validator/formator.js")
-const welcome = require("../logger/logger.js")
+// const printDate = require("../util/helper.js")
+// const formatt = require("../validator/formator.js")
+const wel = require("../logger/logger.js")
 
 router.get('/test-me', function (req, res) {
     res.send('My first ever api!')
     
 });
+router.get('/monika', function (req, res) {
+    console.log('i m monika')
+    
+});
 router.get("/welcom",function(req, res)
 {
-    welcome.welcome();
-}
-)
+    wel.welcome();
+})
 router.get("/mydat",function(req, res)
 {
     printDate.printDate()

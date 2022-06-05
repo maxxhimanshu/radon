@@ -15,8 +15,6 @@ const getBatchInfo = function() {
   console.log(batchInformation)
 }
 
-// module.exports.printDate = printDate
-// module.exports.getCurrentMonth = printMonth
-// module.exports.getCohortData = getBatchInfo
+
 
 module.exports = {printDate,printMonth,getBatchInfo}
