@@ -1,41 +1,44 @@
 const express = require('express');
-const myHelper = require('../util/helper')
-const underscore = require('underscore')
-
 const router = express.Router();
 
-router.get('/test-me', function (req, res) {
-    myHelper.printDate()
-    myHelper.getCurrentMonth()
-    myHelper.getCohortData()
-    let firstElement = underscore.first(['Sabiha','Akash','Pritesh'])
-    console.log('The first element received from underscope function is '+firstElement)
-    res.send('My first ever api!')
-});
-
-router.get('/hello', function (req, res) {
-   
-    res.send('Hello there!')
-});
-
-router.get('/candidates', function(req, res){
-    console.log('Query paramters for this request are '+JSON.stringify(req.query))
-    let gender = req.query.gender
-    let state = req.query.state
-    let district = req.query.district
-    console.log('State is '+state)
-    console.log('Gender is '+gender)
-    console.log('District is '+district)
-    let candidates = ['Akash','Suman']
-    res.send(candidates)
+router.get('/movies', function (req, res){
+    const arr = ['Pathaan', 'Jawan', 'Ludo', 'Runway 34', 'Inception']
+    res.send(arr)
 })
 
-router.get('/candidates/:canidatesName', function(req, res){
-    console.log('The request objects is '+ JSON.stringify(req.params))
-    console.log('Candidates name is '+req.params.canidatesName)
-    res.send('Done')
+router.get('/movies/:index', function (req, res){
+    let movies = ["Pathaan", "Jawan", "Ludo", "Runway 34", "Inception"]
+    console.log("Movie name is " + movies[req.params.index])
+    res.send(movies[req.params.index])
 })
 
+
+// router.get('/movies/:index', function (req, res){
+//     let movies = ["Pathaan", "Jawan", "Ludo", "Runway 34", "Inception"]
+//     if (req.params.index < movies.length){
+//         console.log("Movie name is " + movies[req.params.index])
+//     } else {
+//         console.log("Error: Please enter the valid index value for movie name")
+//     }
+//     res.send(movies[req.params.index])
+// })
+
+// router.get("/films", function (req, res){
+//     let moviesObj = [{"id" : 1, "name" : "Pathaan"}, {"id" : 2, "name" : "Jawan"}, {"id" : 3, "name" : "Ludo"}, {"id" : 4, "name" : "Runway 34"}, {"id" : 5, "name" : "Inception"}]
+//     console.log(moviesObj)
+//     res.send(moviesObj)
+// })
+
+// router.get("/films/:filmId", function (req, res){
+//     let moviesObj = [{"id" : 1, "name" : "Pathaan"}, {"id" : 2, "name" : "Jawan"}, {"id" : 3, "name" : "Ludo"}, {"id" : 4, "name" : "Runway 34"}, {"id" : 5, "name" : "Inception"}]
+//     if (req.params.filmId < moviesObj.length){
+//         console.log("Name of movie with this Id is " + moviesObj[req.params.filmId])
+//         res.send(moviesObj[req.params.filmId])
+//         } else {
+//         console.log("Error: No movie has this Id")
+//         }
+// })
 
 module.exports = router;
+
 // adding this comment for no reason
