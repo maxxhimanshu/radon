@@ -1,4 +1,3 @@
-// 
 const printDate = function() {
     let currentDate = new Date()
     console.log(currentDate+1)    
