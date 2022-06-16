@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
         if (!token) token = req.headers["x-auth-token"];
         if (!token) return res.send({ status: false, msg: "token must be present" });
         
-        var decodedToken = jwt.verify(token, "functionup-radon");
+        let decodedToken = jwt.verify(token, "functionup-radon");
         if (!decodedToken) {
           return res.send({ status: false, msg: "token is invalid" });
         }
@@ -19,14 +19,20 @@ const jwt = require("jsonwebtoken");
 
 
 
-const authorise = function(req, res, next) {
+const authorise = async function(req, res, next) {
     // comapre the logged in user's id and the id in request
     let userId = req.params.userId;
     let userDetails = await userModel.findById(userId);
     if (!userDetails)
       return res.send({ status: false, msg: "No such user exists" });
+      let token = req.headers["x-auth-token"]
+      if (!token) return res.send({ status: false, msg: "token must be present in the request header" })
+      let decodedToken = jwt.verify(token, 'functionup-radon')
+    
+      if (!decodedToken) return res.send({ status: false, msg: "token is not valid" })
+    
       
-      let userToBeModified = req.params.userId
+      let userToBeModified = req.params.userId;
 
       let userLoggedIn = decodedToken.userId
     
