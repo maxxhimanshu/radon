@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-
+const userModel = require("../models/userModel");
 
     //check the token in request header
     //validate this token
@@ -8,10 +8,13 @@ const jwt = require("jsonwebtoken");
         if (!token) token = req.headers["x-auth-token"];
         if (!token) return res.send({ status: false, msg: "token must be present" });
         
-        let decodedToken = jwt.verify(token, "functionup-radon");
+        let decodedToken = jwt.verify(token,"functionup-radon");
+        
+        console.log(decodedToken)
         if (!decodedToken) {
           return res.send({ status: false, msg: "token is invalid" });
         }
+       
         next()
     }
 
