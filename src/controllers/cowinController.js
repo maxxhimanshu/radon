@@ -38,6 +38,9 @@ let getDistricts = async function (req, res) {
     }
 }
 
+
+
+
 let getByPin = async function (req, res) {
     try {
         let pin = req.query.pincode
@@ -57,10 +60,11 @@ let getByPin = async function (req, res) {
     }
 }
 
+
 let getOtp = async function (req, res) {
     try {
         let blahhh = req.body
-        
+
         console.log(`body is : ${blahhh} `)
         var options = {
             method: "post",
